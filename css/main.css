@@ -1,0 +1,526 @@
+body {
+  font-size: 11px;
+  font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+  color: #333;
+  line-height: 1.28;
+  text-align: left;
+  direction: ltr;
+}
+    
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+
+}
+
+input .uiButton {
+  
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  margin: 0;
+  padding: 1px 0 2px;
+  white-space: nowrap;
+  color: white;
+  text-align: center;
+  border-width: 1px;
+background-color: #5B74A8;
+border-color: #29447E #29447E #1A3;
+  
+  width: 59px;
+  height: 22px;
+}
+
+.label {
+  color: #666;
+  font-weight: bold;
+  vertical-align: middle;  
+  text-align: right;
+}
+
+.inputtext {
+  border: 1px solid #BDC7D8;
+  font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+  font-size: 11px;
+  margin: 0;
+  padding: 3px;
+}
+
+.rFloat {
+  float: right;
+}
+
+.lFloat {
+  float: left;
+}
+
+.clearFloat{
+  clear: both;
+}
+
+.progressImg {
+ /* visibility: hidden; */
+  display: none;
+}
+
+
+.UICommonButton {
+  padding: 3px 8px 3px;
+  font-size: 11px;
+  font-weight: bold; 
+  border: 1px solid #29447E;
+  background: #627AAC;
+  color: white;
+  box-shadow: #8a9cc2 0 1px 0 inset;
+  cursor: pointer;
+}
+
+.UICancelButton {
+  padding: 4px 8px 5px;
+  font-size: 13px;
+  font-weight: bold; 
+  border: 1px solid #999;
+  background: #EEEEED;
+  color: #333;
+  box-shadow: #fff 0 1px 0 inset;
+  cursor: pointer;
+}
+
+.UICommonButton:active {
+  background:#4f6aa3;
+  border-bottom-color:#29447e
+}
+
+
+.UICancelButton:active {
+  background:#ddd;
+  border-bottom-color:#999;
+}
+
+
+#container {
+  width: 550px;
+ 
+}
+
+  #title {
+    position:fixed; 
+    z-index:1;
+    top:0px;
+    left:0px;
+    height:50px;
+    width: 100%;
+    background:RGB(227, 238, 255);
+    
+  }
+  
+  #mainView {
+    position2:relative;
+    top2: 41px;
+    border: 1px solid #CCC;
+    border-top-width: 0;
+    padding-top: 50px;
+    width:600px;
+  }
+  
+#mainViewSub {
+    
+    padding-top2: 20px;
+    margin-left: 20px;
+    width:540px;
+  }
+  
+#postView {
+  width: 540px; 
+}
+
+#postFormView {
+  border: 1px solid #BDC7D8;
+}
+
+#postTextArea {
+  resize: none; 
+  overflow: hidden;
+  width: 534px; 
+  border: 0;
+  font-size: 11px;
+}
+
+#postOption {
+  background:#F2F2F2;
+  padding: 5px 20px;
+}
+
+#postImg {
+  border-top: 1px dashed #CCC;
+  margin-top: 1px;
+  padding: 7px 5px 7px 5px;
+  text-align: left;  
+}
+
+#Footer {
+  padding: 6px 0 20px 20px;
+  color : gray;  
+  text-align: right;
+}
+
+
+/*****************************************************
+     Message
+******************************************************/
+#txtListView {
+  margin: 15px 0 0 0;  
+}
+
+#postTitle {
+  margin-bottom: 5px;
+}
+
+
+.msgContent {
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-color: #E9E9E9;  
+  padding-left: 18px;
+  padding-top: 14px;
+  margin-left2: -18px;
+} 
+
+.msgCImg {
+  float: left;
+  position: relative;
+  padding: 0 10px 0 0 ;
+}
+
+
+
+.msgInnerContent {
+  float: left;
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.msgWriterName {
+  color: #3B5998;
+  font-weight: bold;
+}
+
+.msgBody {
+  color: black;
+  
+  margin-bottom: 5px;
+  
+}
+
+.msgFooter {
+  margin-bottom: 5px;
+}
+.msgFooter .commentLink {
+  color: #6D84B4;
+}
+
+.msgFooter .dateTime {
+  color: #999;
+}
+
+
+#moreStory {
+  background-color: #EDEFF4;
+  border: 1px solid #D8DFEA;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  
+  padding: 10px 15px;
+  color: #3B5998;
+}
+
+#noMoreStory {
+  background-color: #EDEFF4;
+  border: 1px solid #D8DFEA;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  
+  padding: 10px 15px;
+}
+
+
+.msg_exposed_link {
+  color:#3B5998
+}
+
+/*****************************************************
+     Comment
+******************************************************/
+.comment {
+  width: 398px;
+  display2: none;
+}
+
+.comment .commentItem , .commentViewAll {
+  border-bottom: 1px solid #D2D9E7;
+  background-color: #EDEFF4;
+  margin-top: 1px;
+  padding: 5px 5px 4px;
+}
+
+.comment .commentImg {
+  float: left;
+  position: relative;
+  padding-right: 8px;
+}
+
+.comment .commentVIew {
+  float: left;
+  position: relative;
+  padding-top: 1px;
+  width: 331px;
+}
+
+.comment .commentDel {
+  float: right;
+  position: relative;
+}
+
+.comment .commentName {
+  font-weight: bold;
+  color: #3B5998;
+  
+}
+
+.comment .commentDate {
+  color: gray;
+  padding-top: 2px;
+}
+
+.comment .ctDImg {
+  display: none;
+}
+
+.commentPost , .dummyCommentText{
+  margin-top: 1px;
+  border-bottom: 1px solid #D2D9E7;
+  background-color: #EDEFF4;
+  
+}
+
+.commentPost {
+  padding: 5px 2px 4px 5px;
+  display: none;
+}
+
+.dummyCommentText{
+ padding: 5px 5px 4px 5px; 
+}
+
+.commentForm {
+  float: left;
+  position: relative;
+  
+}
+
+.commentForm .commentText {
+  resize: none; 
+  overflow: hidden;
+  height: 14px;
+  width: 325px;
+  border: 1px solid #BDC7D8;
+  font-size: 11px;
+}
+
+.commentPost .commentSelImg {
+  float: left;
+  position: relative;
+  padding-right: 6px;
+}
+
+
+/*****************************************************
+     ToolTip
+******************************************************/
+
+.tooltip {
+  position: absolute; /* Required */
+  bottom: 0; /* Required */
+  left: 0; /* Required */
+  display: none; /* Required */
+
+  /* z-index: 50; */
+  color: white;
+  
+  font-size: 11px;
+  font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+}    
+
+.tooltip .tooltipMsg {
+  background-color: black;
+  padding: 4px 8px;  
+}
+
+.tooltip .tooltipBottom {
+  width: 0;
+  height: 0;
+  
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+
+  border-top: 4px solid black;
+  
+  margin-left: 6px;
+  margin-bottom: 1px;
+}
+
+
+/*****************************************************
+     Popup Window
+******************************************************/
+.mainPopupWindow{
+  background: rgba(252, 252, 252, 0.9);
+  height: 100%;
+  width: 100%;
+  
+  z-index: 500;
+  
+  left: 0;
+  top: 0;
+  overflow: visible;
+  outline: none;
+  position: fixed;
+  
+  display: none;
+}
+
+.mainPopupWindow .PW_window {
+    
+    width: 465px;
+    margin: 125px auto 0 auto;
+    
+    background: rgba(82, 82, 82, 0.7);
+    padding: 10px;
+    
+    border-radius: 8px;
+}
+
+.mainPopupWindow .PW_title {
+  background: #6D84B4;
+  border: 1px solid #3B5998;
+  border-bottom: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0; 
+  padding: 5px 10px;
+}
+
+.mainPopupWindow .PW_body {
+  background: white;
+  border: 1px solid #555;
+  border-top-width: 0; 
+}
+
+.mainPopupWindow .PW_msg {
+  padding: 10px;
+  border-bottom: 1px solid #CCC;
+  
+  float: left;
+  position: relative;
+}
+
+.mainPopupWindow .PW_progress {
+  float: right;
+  position: relative;
+  padding: 10px 15px 0 0;
+  display: none;
+}
+
+.mainPopupWindow .PW_footer {
+  background: #F2F2F2;
+  padding: 8px 10px 8px 10px;
+  
+}
+
+.mainPopupWindow .PW_passwordForm {
+  float: left;
+  position: relative;
+  
+  margin-top: 5px;
+}
+
+.mainPopupWindow .PW_buttons {
+  float: right;
+  position: relative;
+}
+
+.mainPopupWindow .UICommonButton {
+  font-size: 13px;
+  padding: 4px 8px 5px;
+}
+
+
+
+
+.alertPopupWindow{
+  background: rgba(252, 252, 252, 0.9);
+  height: 100%;
+  width: 100%;
+  
+  z-index: 500;
+  
+  left: 0;
+  top: 0;
+  overflow: visible;
+  outline: none;
+  position: fixed;
+  
+  display: none;
+}
+
+.alertPopupWindow .PW_window {
+    
+    width: 465px;
+    margin: 125px auto 0 auto;
+    
+    background: rgba(82, 82, 82, 0.7);
+    padding: 10px;
+    
+    border-radius: 8px;
+}
+
+.alertPopupWindow .PW_title {
+  background: #6D84B4;
+  border: 1px solid #3B5998;
+  border-bottom: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0; 
+  padding: 5px 10px;
+}
+
+.alertPopupWindow .PW_body {
+  background: white;
+  border: 1px solid #555;
+  border-top-width: 0; 
+}
+
+.alertPopupWindow .PW_msg {
+  padding: 10px;
+  border-bottom: 1px solid #CCC;
+  color: #C66;
+}
+
+.alertPopupWindow .PW_footer {
+  background: #F2F2F2;
+  padding: 8px 10px 8px 10px;
+  text-align: right;
+}
+
+.alertPopupWindow .UICommonButton {
+  font-size: 13px;
+  padding: 4px 8px 5px;
+}

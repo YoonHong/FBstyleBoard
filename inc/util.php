@@ -6,6 +6,10 @@ function seeMoreForMsg( $msg ){
   $view_line = 5;
   
   $msg =  nl2br($msg); 
+  
+  // Until bug is fixed, ignore this part.
+  return $msg;
+  
   $numBR = substr_count( $msg , $split_word );
   
   $rMsg = $msg;

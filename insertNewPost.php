@@ -13,8 +13,7 @@
   //$vContent = nl2br(htmlspecialchars($vContent));
   $vContent = htmlspecialchars($vContent);
   
-  $sql = "INSERT INTO er_newboard_main (name, pw, content, bDateTime, type) VALUES (\"$vName\", \"$vPW\", \"$vContent\", NOW(), \"$btype\" )"; 
- 
+  $sql = "INSERT INTO er_newboard_main (name, pw, content, bDateTime, numOfPics, type) VALUES (\"$vName\", \"$vPW\", \"$vContent\", NOW(), 0, \"$btype\" )"; 
  
   if ( ! $db->query( $sql ) ) {
     echo false;  

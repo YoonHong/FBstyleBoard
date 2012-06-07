@@ -73,6 +73,7 @@ $(document).ready(function(){
         <div id='postTitle'>
           
             <div class="lFloat"><img src="img/post.png" style="vertical-align:middle" / > <span style="font-weight: bold;">Write Post</span></div>
+            
             <div class="rFloat progressImg" id="postProgressImg"><img src="img/progress.gif" /></div>
             <div class="clearFloat"></div>
         </div>
@@ -89,21 +90,15 @@ $(document).ready(function(){
             <textarea id='postTextArea' name="postMSG" rows="3" ></textarea>
           </div>
           
-          <div id='postImg' style="display:none;">
-            
-            <div id='postImglink' style="font-weight: bold; color: #3B5998">
-              <img src="img/plus.png" /> Upload Pictures
-            </div>
-            
-            <div id='postImgFiles' style="display:none;">
+          <div id='postImg'>
+                        
+            <div id='postImgFiles' >
               <div style="font-weight: bold;">
-                Select an image on your computer.
-                <img src="img/del2.png" id="postImgClose" style="float: right" />
-              </div>
-              
-              <input name="postImg1" type="file"  /> <br/>
-              <input name="postImg2" type="file"  /> <br/>
-              <input name="postImg3" type="file"  />
+                <span id='postImgUploadMsg'>Select an image on your computer.</sapn>
+                <img src="img/del2.png" id="postImgClose" style="float: right; display:none;" />
+              </div>          
+              <input name="postImg1" type="file" accept="image/*" /> <br/>
+ 
             </div>
           </div>
           
@@ -114,7 +109,7 @@ $(document).ready(function(){
             <label class="label" id="postFormLblPW" style="margin-left: 20px"> Password: </label>
             
             <input type='text' id="postPW" name="postPW"  class='inputtext' size="10" maxlength="8" />
-            <input type='hidden' name="btype" value="<?=  $g_bType ?>" />
+            <input type='hidden' name="btype" value="<?= $g_bType ?>" />
             
             <input type="submit" class="UICommonButton" value="Post"  style="padding-left: 20px; padding-right: 20px; float: right;"/>
           </div>
@@ -235,7 +230,13 @@ $(document).ready(function(){
   </div>
 </div>
 
+<div class="IPW_Show_Imgs" id="IPW_Show_Imgs">
+  <div class="IPW_Show_Imgs_Viewer">
 
+      <img src="" id="IPW_Big_Img" />
+    
+  </div>
+</div>
 
 </body>
 </html>

@@ -108,7 +108,7 @@ function PWDelBT_ClickEventOn(  ) {
       if (textStatus == "success" ) {
         // Success 
         //var data = xhr.responseText;
-      
+
         if(data == "0") {
         // Correct Password
            $g_delDiv.remove();

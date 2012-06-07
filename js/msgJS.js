@@ -94,6 +94,11 @@ function msgLib(  ){
     var vPW = $.trim($postMsgPW.val());
     
     var isErr = false;
+    var isImg = false;
+    
+    var img1 = $this.find('input[name="postImg1"]').val();
+
+    if (img1) isImg = true;
     
     if(!vPW) {
       isErr = true;
@@ -113,26 +118,26 @@ function msgLib(  ){
       $('#postFormLblName').css('color' , '#666');
     }
 
-    if(!vMsg) {
-      // If there is any image selected, it's ok.
-      if( $this.find('#postImgFiles').css('display') == 'none' ) {
-              
-        isErr = true;
-        $postMsgText.focus();
-        
-      } else {
-        
-        var img1 = $this.find('input[name="postImg1"]').val();
-        var img2 = $this.find('input[name="postImg2"]').val();
-        var img3 = $this.find('input[name="postImg3"]').val();
-        
-        if( !(img1 || img2 || img3)) {
-        // No Msg and No Imgs
-          isErr = true;
-          $postMsgText.focus();
-        }
-      }
+    if(!vMsg && !isImg) {
+             
+      isErr = true;
+      $postMsgText.focus();
 
+    }
+    
+    //Check Type of File
+    if(isImg) {
+      
+      var pos = img1.lastIndexOf(".");
+      var ext = img1.substr(pos + 1).toLowerCase();
+      
+      if( ext != "gif" && ext != "jpg" && ext != "png" ) {
+        $('#postImgUploadMsg').css('color' , '#C66');
+        $this.find('input[name="postImg1"]').val("");
+        isErr = true;
+      } else {
+        $('#postImgUploadMsg').css('color' , '#333');
+      }
     }
         
     if(isErr) {
@@ -146,7 +151,8 @@ function msgLib(  ){
     
     //console.log("%o", formData);
     
-    var url = $this.attr('action');
+    //var url = $this.attr('action');
+   
     
     $postSubmitButton = $(":submit" , this);
     $postSubmitButton.attr("disabled", "disabled");
@@ -154,29 +160,44 @@ function msgLib(  ){
     // Change design as disabled button
     $postSubmitButton.css({"background":"#ADBAD4", "border-color":"#94A2BF", "cursor":"default"}) 
 
-    $.post(url, formData).always( function(data, textStatus) {
-      $('#postProgressImg').hide();
+    if (isImg) {
+      // For Add Photo
+      var url = "addPhotos.php";
       
-      $postSubmitButton = $("#postAll :submit");
-      $postSubmitButton.removeAttr("disabled");
-      $postSubmitButton.css({"background":"#627AAC", "border-color":"#29447E", "cursor":"pointer"})
+      $this.attr({"action" : url , "enctype" : "multipart/form-data"});
       
-      if (textStatus == 'success') {
-           $(data).hide().prependTo('#txtListView').fadeIn("slow");
-           $('#txtListView').find('.commentText:first').elastic();
-           
-           $postMsgText.val("");
-           $postMsgName.val("");
-           $postMsgPW.val("");
-           
-           $('#postViewDummy').show();
-           $('#postFormView').hide();
-      }
-    });
-        
-    return false;
-  });   
+      return true;
+      
+    } else {
+      var url = "insertNewPost.php";
   
+      $.post(url, formData).always( function(data, textStatus) {
+        $('#postProgressImg').hide();
+        
+        $postSubmitButton = $("#postAll :submit");
+        $postSubmitButton.removeAttr("disabled");
+        $postSubmitButton.css({"background":"#627AAC", "border-color":"#29447E", "cursor":"pointer"})
+        
+        if (textStatus == 'success') {
+             $(data).hide().prependTo('#txtListView').fadeIn("slow");
+             $('#txtListView').find('.commentText:first').elastic();
+             
+             $postMsgText.val("");
+             $postMsgName.val("");
+             $postMsgPW.val("");
+             
+             $('#postViewDummy').show();
+             $('#postFormView').hide();
+        }
+      });
+ 
+      return false;
+    }
+      
+    
+  }); // $('#postForm').submit
+  
+   
   /*
    *   Click Events
    */  
@@ -198,20 +219,31 @@ function msgLib(  ){
     
   }); // $g_MAIN_MSG_LIST.on('click', '.msg_exposed_link'
   
-  // Upload Images
-  $("#postImglink").click( function () {
+    
+  // Click a Image
+  $g_MAIN_MSG_LIST.on('click', '.toSeeMainImg', function() {    
     $this = $(this);
-    $this.hide();
     
-    $('#postImgFiles').show();
+    var imgPath = $('img', this).attr("src");
+    var pos = imgPath.lastIndexOf("/");
+    var originImg = "/dev/data/boardImg" + imgPath.substr(pos);
+
+    $("#IPW_Big_Img").attr("src", originImg);
+    $("#IPW_Show_Imgs").show();
     
-  });
+    $('body').css("overflow", "hidden"); 
+    //$("#container").hide();
+    
+  }); // $g_MAIN_MSG_LIST.on('click', '.toSeeMainImg'
   
-  // Close Upload Image Files
-  $("#postImgClose").click( function () {
-    $('#postImgFiles').hide();
-    $('#postImglink').show();
-  });
+  // Close Original Image Window
+  $("#IPW_Show_Imgs").click( function() { 
+    $this = $(this);
+    
+   // $("#container").show();
+    $this.hide();
+    $('body').css("overflow", "visible"); 
+  }); // $("#IPW_Show_Imgs").click
   
   
   // Get More Strories
@@ -291,32 +323,7 @@ function msgLib(  ){
     }
   }, '.msg_exposed_link'); // $g_MAIN_MSG_LIST.on
 
-  // Upload Images
-  $("#postImglink").hover(
-    function () {
-      $this = $(this);
-      $this.css({'cursor' : 'pointer' , 'text-decoration' : 'underline' });
-    },
-    function () {
-      $this = $(this);
-      $this.css({'cursor' : 'default' , 'text-decoration' : 'none'});
-    } 
-  ); // $("#postImglink").hover
-  
-  // Close Upload Image Files
-  $("#postImgClose").hover(
-    function () {
-      $this = $(this);
-      $this.css('cursor', 'pointer');
-      $this.attr('src','img/del1.png');
-    },
-    function () {
-      $this = $(this);
-      $this.css('cursor', 'default');
-      $this.attr('src','img/del2.png'); 
-    } 
-  ); // $("#postImglink").hover
- 
+   
   // More Stories  
   moreStoryMouseEventOn();
   

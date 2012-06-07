@@ -1,7 +1,5 @@
 <?php
 
-
-
 function seeMoreForMsg( $msg ){
   $split_word = '<br />';
   $max_line = 7;
@@ -42,9 +40,17 @@ function printMSG($row, $commentCheck, $db = null) {
   $name = $row['name'];
   $msg = $row['content'];
   $mid = $row['id'];
+  $numOfImgs = $row['numOfPics'];
+  
   $date = date("F d, Y \a\\t g:ia", strtotime($row['bDateTime']));
   
   $msg = seeMoreForMsg($msg);
+  
+  $printName = $name;
+  // For img without msg
+  if ($numOfImgs > 0 && !$msg) {
+    $printName .= " <span style='font-weight: normal; color:gray'>added a new photo.</span>";
+  }
   
   echo <<<_END
   
@@ -57,10 +63,33 @@ function printMSG($row, $commentCheck, $db = null) {
         
         <div class="msgInnerContent">
           
-          <div class="msgWriterName">$name</div>
+          <div class="msgWriterName">$printName</div>
           
           <div class="msgBody">$msg</div>
-          
+_END;
+
+    // For img
+    if ($numOfImgs > 0) {
+
+      $simgDir = '/dev/data/boardImg/s/';      
+      $imgName = $mid."_1.jpg";
+      
+      $imgFName = $simgDir.$imgName;
+      $imgPath = $_SERVER['DOCUMENT_ROOT'].$imgFName;
+      $imgSize = getimagesize($imgPath);
+      
+      echo <<<_END
+     
+        <div style="margin-top: 10px; margin-bottom: 10px">
+          <a style="border: 1px solid #CCC; display: inline-block; cursor:pointer;" class="toSeeMainImg" >
+            <img src="$imgFName" $imgSize[3] style="margin:3px;"/>
+          </a>
+        </div>
+      
+_END;
+    }
+
+     echo <<<_END
           <div class="msgFooter">
             <span class="commentLink">Comment</span> 
             <span class="dateTime"> · $date</span>

@@ -184,7 +184,7 @@ _END;
                      
                      
                       <!--<button class="UICommonButton" style="margin-left: 40px">Comment</button>-->
-                      <input type='submit' value='Comment' class="UICommonButton" style="margin-left: 20px" />
+                      <input type='submit' value='Comment' class="UICommonButton" style="margin-left: 110px" />
                     </div>
                   </form>
                 </div>

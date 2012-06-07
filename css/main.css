@@ -202,6 +202,9 @@ input .uiButton {
   float: left;
   position: relative;
   margin-bottom: 14px;
+  
+    width: 475px;
+
 }
 
 .msgWriterName {
@@ -256,7 +259,7 @@ input .uiButton {
      Comment
 ******************************************************/
 .comment {
-  width: 398px;
+  width: 450px;
 }
 
 .comment .commentItem , .commentViewAll {
@@ -276,7 +279,7 @@ input .uiButton {
   float: left;
   position: relative;
   padding-top: 1px;
-  width: 331px;
+  width: 400px;
 }
 
 .comment .commentDel {
@@ -325,7 +328,7 @@ input .uiButton {
   resize: none; 
   overflow: hidden;
   height: 14px;
-  width: 325px;
+  width: 400px;
   border: 1px solid #BDC7D8;
   font-size: 11px;
 }

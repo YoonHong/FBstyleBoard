@@ -1,28 +1,24 @@
 <?php
 
 function seeMoreForMsg( $msg ){
-  $split_word = '<br />';
+  $split_word = "\n";
   $max_line = 7;
   $view_line = 5;
   
-  $msg =  nl2br($msg); 
-  
-  // Until bug is fixed, ignore this part.
-  return $msg;
-  
-  $numBR = substr_count( $msg , $split_word );
-  
-  $rMsg = $msg;
-  
-  if( $numBR > $max_line ) {
-    // Add See More
+  $numNLine = substr_count( $msg, "\n" );
+ 
+  if( $numNLine <= $max_line ) {
+    // Short Msg
+    $rMsg = nl2br($msg);
+    
+  }else {
     $tok = strtok($msg, $split_word);
     $count = 0;
     $rMsg = "";
     
-    while ($tok !== false) {
+    while ($tok !== false) {           
       $count++;
-      $rMsg .= $tok .$split_word;
+      $rMsg .= $tok ."<br/>";
       
       if( $count == $view_line ) {
         $rMsg .= "<span class='msg_exposed_hide'>...</span><span class='msg_exposed_show' style='display:none'>";
@@ -33,10 +29,10 @@ function seeMoreForMsg( $msg ){
     }
     
     $rMsg .= "</span><span class='msg_exposed_hide msg_exposed_link'><br />See More</span>";
-  }
     
+  }
+
   return $rMsg;
-  //return $msg;
 }
 
 function printMSG($row, $commentCheck, $db = null) {

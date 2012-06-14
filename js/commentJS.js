@@ -190,7 +190,7 @@ function commentLib() {
   
   
   // View All Comments
-  $('.commentItems').on('click', '.commentViewAll', function() {
+  $g_MAIN_MSG_LIST.on('click', '.commentViewAll', function() {
     $this = $(this);
     $commentItems = $this.parent();
     
@@ -287,7 +287,7 @@ function commentLib() {
    */ 
    
   // Comment View All
-  $('.commentItems').on({
+  $g_MAIN_MSG_LIST.on({
     mouseenter: function(){
       $this = $(this);
       $this.css({"text-decoration":"underline", "cursor":"pointer"});
